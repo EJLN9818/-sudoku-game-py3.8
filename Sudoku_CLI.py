@@ -119,7 +119,8 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
                 else:
                     print('That location is already correctly filled!')
                 if np.array_equal(Solved_Board,Unsolved_Board):
-                    print('Congrats on solving the sudoku!')
+                    print('Congrats on solving the sudoku!\n')
+                    show_logo()
                     break
             except Exception:
                 print('index is out of bounds')
@@ -128,8 +129,9 @@ def Play_Sudoku(Solved_Board,Unsolved_Board):
             Print_Board(Solved_Board)
             print(
                 '\nThank you for playing!\nWe hope to see you again.\nRegards,'
-                '\nYour friendly neighbourhood programmer'
+                '\nYour friendly EJ programmer\n'
             )
+            show_logo()
             return
 
 #Solving any unsolved sudoku puzzle is done here, first call generates a solved puzzle
@@ -151,17 +153,33 @@ def Solve_Sudoku(board,not_check):
                     board[row,col]=0 
     return False
 
+def show_logo():
+    print(
+        '─██████████████─────────██████─\n'
+        '─██░░░░░░░░░░██─────────██░░██─\n'
+        '─██░░██████████─────────██░░██─\n'
+        '─██░░██─────────────────██░░██─\n'
+        '─██░░██████████─────────██░░██─\n'
+        '─██░░░░░░░░░░██─────────██░░██─\n'
+        '─██░░██████████─██████──██░░██─\n'
+        '─██░░██─────────██░░██──██░░██─\n'
+        '─██░░██████████─██░░██████░░██─\n'
+        '─██░░░░░░░░░░██─██░░░░░░░░░░██─\n'
+        '─██████████████─██████████████-\n'
+    )
+
 #Inputs difficulty and initializes playing board
 
 def main():
+    show_logo()
     while True:
         try:
             ch=int(
-                input('Hello!Choose the level of difficulty-\n1.Easy\n2.Medium\n3.Hard\nYour choice:')
+                input('Hello!Choose the level of difficulty\n1.Easy\n2.Medium\n3.Hard\nYour choice:')
             )
             break
         except Exception:
-            print('Enter one digits please')
+            print('Enter one digits please\n')
     if ch==1:
         difficulty='Easy'
     elif ch==2:
